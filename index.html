@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krammala Assala Haifaa | Embedded Systems Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --blue: #2563eb;
+  --violet: #7c3aed;
+  --blue-light: #60a5fa;
+  --violet-light: #a78bfa;
+  --surface: rgba(255,255,255,0.045);
+  --border: rgba(255,255,255,0.09);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --soft: #cbd5e1;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(37,99,235,0.22) 0%, transparent 38%),
+    radial-gradient(circle at 85% 90%, rgba(124,58,237,0.22) 0%, transparent 38%),
+    linear-gradient(140deg, #020617, #0f172a, #111827);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(9,14,28,0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 16px 30px;
+  text-align: center;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+}
+
+nav a {
+  color: var(--soft);
+  text-decoration: none;
+  margin: 0 20px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.25s;
+}
+
+nav a:hover { color: var(--blue-light); }
+
+/* ── HERO ── */
+header {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero { max-width: 860px; }
+
+.hero h1 {
+  font-family: 'poppins', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 800;
+  margin-bottom: 22px;
+  background: linear-gradient(100deg, #60a5fa 0%, #a78bfa 60%, #f0abfc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.hero p {
+  color: var(--soft);
+  font-size: 1.15rem;
+  font-weight: 300;
+  margin-bottom: 38px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+/* ── BUTTON ── */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 12px;
+  background: linear-gradient(100deg, var(--blue), var(--violet));
+  color: white;
+  text-decoration: none;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 0 30px rgba(37,99,235,0.3);
+  transition: transform 0.28s cubic-bezier(.2,.8,.3,1.2), box-shadow 0.28s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 40px rgba(124,58,237,0.45);
+}
+
+/* ── SECTIONS ── */
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 90px 24px;
+}
+
+/* ── SECTION TITLE ── */
+.section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-title h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  background: linear-gradient(100deg, var(--blue-light), var(--violet-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 54px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--violet));
+  border-radius: 99px;
+  margin: 10px auto 0;
+}
+
+/* ── GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 26px;
+  transition: transform 0.3s cubic-bezier(.2,.8,.3,1.1), box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 16px 48px rgba(96,165,250,0.12);
+}
+
+.card h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  color: var(--blue-light);
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+p, ul { color: var(--soft); line-height: 1.7; }
+ul { margin-left: 20px; margin-top: 10px; }
+
+/* ── HIGHLIGHT NUMBER ── */
+.highlight-number {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--violet-light);
+  margin-bottom: 6px;
+}
+
+/* ── RESUME / CONTACT ── */
+.resume, .contact { text-align: center; }
+
+.contact a {
+  color: var(--soft);
+  margin: 0 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.contact a:hover { color: var(--blue-light); }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 32px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ══════════════════════════════════
+   PROJECT CARDS — compact clickable
+══════════════════════════════════ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 26px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.28s cubic-bezier(.2,.8,.3,1.1), box-shadow 0.28s, border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(124,58,237,0.06));
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 56px rgba(96,165,250,0.14);
+  border-color: rgba(96,165,250,0.28);
+}
+
+.project-card:hover::before { opacity: 1; }
+
+.project-card-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  color: var(--blue-light);
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: 99px;
+  border: 1px solid rgba(96,165,250,0.3);
+  color: var(--blue-light);
+  background: rgba(37,99,235,0.1);
+}
+
+.project-card-hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.project-card:hover .project-card-hint { color: var(--blue-light); }
+
+.project-card-hint svg {
+  transition: transform 0.2s;
+}
+
+.project-card:hover .project-card-hint svg {
+  transform: translateX(3px);
+}
+
+/* ══════════════════════════════════
+   PROJECT MODAL
+══════════════════════════════════ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 2000;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: #0f172a;
+  border: 1px solid rgba(96,165,250,0.2);
+  border-radius: 24px;
+  padding: 2.2rem 2.4rem;
+  max-width: 580px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.9) translateY(16px);
+  transition: transform 0.3s cubic-bezier(.2,.8,.3,1.15);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(96,165,250,0.08);
+}
+
+.modal-backdrop.open .modal {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-close:hover {
+  background: rgba(239,68,68,0.2);
+  color: #fca5a5;
+  border-color: rgba(239,68,68,0.3);
+}
+
+.modal-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  background: linear-gradient(100deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 14px;
+  padding-right: 44px;
+  line-height: 1.2;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 20px;
+}
+
+.modal-desc {
+  color: var(--soft);
+  font-size: 0.97rem;
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+
+.modal-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 22px 0;
+}
+
+.modal-details-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.modal-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-details li {
+  color: var(--soft);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  padding-left: 20px;
+  position: relative;
+}
+
+.modal-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 1.5px solid var(--blue-light);
+}
+
+/* ══════════════════════════════════
+   GRAPHIC DESIGN SECTION
+══════════════════════════════════ */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 16px;
+  background: rgba(0,0,0,0.25);
+  aspect-ratio: 16 / 10;
+  cursor: pointer;
+}
+
+.carousel-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+
+.carousel-track img {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 14px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.carousel-wrapper::after {
+  content: 'Click to expand';
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  background: rgba(0,0,0,0.55);
+  color: #e2e8f0;
+  font-size: 0.72rem;
+  font-family: 'DM Sans', sans-serif;
+  padding: 4px 10px;
+  border-radius: 99px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.carousel-wrapper:hover::after { opacity: 1; }
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(9,14,28,0.72);
+  border: 1px solid var(--border);
+  color: var(--soft);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  z-index: 5;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.carousel-btn:hover { background: var(--blue); color: #fff; }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 0 0;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.22);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.dot.active {
+  background: var(--blue-light);
+  transform: scale(1.35);
+}
+
+.design-single-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+  margin-top: 16px;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.design-single-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(96,165,250,0.18);
+}
+
+/* ══════════════════════════════════
+   IMAGE LIGHTBOX
+══════════════════════════════════ */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(2,6,23,0.93);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.32s ease;
+}
+
+#lightbox.open { opacity: 1; pointer-events: all; }
+
+#lightbox-img-wrap {
+  position: relative;
+  max-width: 92vw;
+  max-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 16px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+  object-fit: contain;
+  display: block;
+  transform: scale(0.88);
+  transition: transform 0.35s cubic-bezier(.2,.8,.3,1.1);
+}
+
+#lightbox.open img { transform: scale(1); }
+
+.lb-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(9,14,28,0.8);
+  border: 1px solid var(--border);
+  color: var(--soft);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  z-index: 10001;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lb-arrow:hover { background: var(--blue); color: #fff; }
+.lb-arrow.lb-prev { left: -60px; }
+.lb-arrow.lb-next { right: -60px; }
+.lb-arrow.hidden { display: none; }
+
+#lb-counter {
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+
+#lightbox-close {
+  position: fixed;
+  top: 22px;
+  right: 26px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+  color: var(--soft);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  z-index: 10002;
+  line-height: 1;
+}
+
+#lightbox-close:hover { background: rgba(239,68,68,0.25); color: #fca5a5; }
+
+#lb-esc-hint {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-family: 'DM Sans', sans-serif;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════
+   EMAIL MODAL — centered layout
+══════════════════════════════════ */
+#email-modal-backdrop .modal {
+  text-align: center;
+}
+
+#email-modal-backdrop .modal-title {
+  /* re-enable text fill for centered modal title */
+  padding-right: 0;
+  text-align: center;
+}
+
+#email-modal-backdrop .modal-desc {
+  text-align: center;
+}
+
+#email-modal-backdrop .modal-tags {
+  justify-content: center;
+}
+
+.email-address-box {
+  background: rgba(37,99,235,0.08);
+  border: 1px solid rgba(96,165,250,0.2);
+  border-radius: 14px;
+  padding: 16px 20px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--blue-light);
+  font-weight: 500;
+  word-break: break-word;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.email-address-box svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.email-modal-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 11px 28px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid rgba(96,165,250,0.35);
+  color: var(--blue-light);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.btn-outline:hover {
+  background: rgba(37,99,235,0.12);
+  border-color: rgba(96,165,250,0.6);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  nav a { margin: 0 10px; font-size: 0.75rem; }
+  .lb-arrow.lb-prev { left: -38px; }
+  .lb-arrow.lb-next { right: -38px; }
+  .modal { padding: 1.6rem 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#highlights">Highlights</a>
+  <a href="#projects">Projects</a>
+  <a href="#design">Design</a>
+  <a href="#internships">Internships</a>
+  <a href="#leadership">Leadership</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="hero">
+    <h1>Krammala Assala Haifaa</h1>
+    <p>
+      Electronics and Embedded Systems Engineering student with hands-on experience in ESP32 development, industrial instrumentation, IoT systems, and real-time monitoring solutions. Passionate about building practical embedded systems that bridge hardware and software to solve real engineering problems.
+    </p>
+    <a href="#projects" class="btn">Explore My Work</a>
+  </div>
+</header>
+
+<!-- HIGHLIGHTS -->
+<section id="highlights">
+  <div class="section-title"><h2>Highlights</h2></div>
+  <div class="grid">
+    <div class="card">
+      <div class="highlight-number">4+</div>
+      <p>Internships Completed</p>
+    </div>
+    <div class="card">
+      <div class="highlight-number">3+</div>
+      <p>Embedded Projects</p>
+    </div>
+    <div class="card">
+      <div class="highlight-number">Leadership</div>
+      <p>Engineering Club Experience</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="section-title"><h2>About Me</h2></div>
+  <p style="text-align:center; max-width:760px; margin:auto; line-height:1.8;">
+    I am an electronics engineering student specializing in embedded systems and industrial automation. Through academic projects and industrial internships, I have developed practical experience in microcontroller programming, sensor integration, IoT monitoring, and industrial instrumentation. I am currently seeking opportunities where I can contribute to real-world embedded engineering projects while continuing to strengthen my technical expertise.
+  </p>
+</section>
+
+<!-- SKILLS -->
+<section>
+  <div class="section-title"><h2>Skills</h2></div>
+  <div class="grid">
+    <div class="card">
+      <h3>Embedded Systems</h3>
+      <p>ESP32, Arduino, FreeRTOS, IoT</p>
+    </div>
+    <div class="card">
+      <h3>Programming</h3>
+      <p>C, C++, Python, Web basics</p>
+    </div>
+    <div class="card">
+      <h3>Tools</h3>
+      <p>PCB Basics, proteus, microsoft tools , Photoshop</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title"><h2>Projects</h2></div>
+  <div class="projects-grid" id="projects-grid"></div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title-el">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-title" id="modal-title-el"></div>
+    <div class="modal-tags" id="modal-tags"></div>
+    <p class="modal-desc" id="modal-desc"></p>
+    <hr class="modal-divider">
+    <div class="modal-details-label">Key details</div>
+    <ul class="modal-details" id="modal-details"></ul>
+  </div>
+</div>
+
+<!-- GRAPHIC DESIGN -->
+<section id="design">
+  <div class="section-title"><h2>Graphic Design Work</h2></div>
+  <div class="grid">
+
+    <div class="card">
+      <h3>MUHANDIS Posters Set 1</h3>
+      <div class="carousel-wrapper"
+           data-images='["images/prepaday1.jpg","images/prepaday2.jpg","images/prepaday3.jpg"]'>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <img src="images/prepaday1.jpg" alt="MUHANDIS Poster 1">
+            <img src="images/prepaday2.jpg" alt="MUHANDIS Poster 2">
+            <img src="images/prepaday3.jpg" alt="MUHANDIS Poster 3">
+          </div>
+        </div>
+        <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+      </div>
+      <div class="carousel-dots"></div>
+      <p style="margin-top:14px;">Posts designs created for engineering club events using Photoshop.</p>
+    </div>
+
+    <div class="card">
+      <h3>MUHANDIS Posters Set 2</h3>
+      <div class="carousel-wrapper"
+           data-images='["images/battlefeild1.jpg","images/battlefeild2.jpg"]'>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <img src="images/battlefeild1.jpg" alt="Battlefield Poster 1">
+            <img src="images/battlefeild2.jpg" alt="Battlefield Poster 2">
+          </div>
+        </div>
+        <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+      </div>
+      <div class="carousel-dots"></div>
+      <p style="margin-top:14px;">Visual content for club event.</p>
+    </div>
+
+    <div class="card">
+      <h3>Muhandis Poster 3</h3>
+      <img src="images/old_prepaday.jpg" alt="Personal design work"
+           class="design-single-img" data-lightbox-src="images/old_prepaday.jpg">
+      <p style="margin-top:14px;">first work in Photoshop exploring layout and visual hierarchy.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- INTERNSHIPS -->
+<section id="internships">
+  <div class="section-title"><h2>Internships</h2></div>
+  <div class="grid">
+    <div class="card"><h3>ENAP</h3><p>Observed industrial production systems and maintenance workflows in a manufacturing environment, gaining practical exposure to production operations and equipment organization.</p></div>
+    <div class="card"><h3>Fertial</h3><p>Worked with instrumentation systems used in industrial processes, learning about pressure, level, temperature, and flow measurement devices, along with industrial valve operation.</p></div>
+    <div class="card"><h3>Mobilis</h3><p>Developed an embedded IoT prototype for infrastructure monitoring using ESP32, applying sensor integration and real-time monitoring concepts in an industrial telecommunications environment.</p></div>
+    <div class="card"><h3>Berrahal</h3><p>Designed an embedded industrial machine monitoring solution focused on supervising machine operation, collecting operational data, and developing an embedded approach to improve real-time monitoring, system reliability, and maintenance efficiency in an industrial environment.</p></div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="section-title"><h2>Leadership &amp; Volunteering</h2></div>
+  <div class="card">
+    <p>Led technical and organizational activities within the Muhandis engineering club, coordinating events, managing teams, and contributing to workshops focused on engineering, technology, and student development. This experience strengthened my leadership, project coordination, and communication skills in collaborative technical environments.</p>
+  </div>
+</section>
+
+<!-- RESUME -->
+<!-- ✅ FIX 3: CV download link — replace "cv.pdf" with your actual file path if different -->
+<section class="resume">
+  <div class="section-title"><h2>Resume</h2></div>
+  <a class="btn" href="cv.pdf" download="Krammala_Assala_Haifaa_CV.pdf">
+     &nbsp;Download CV
+  </a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-title"><h2>Contact</h2></div>
+  <a href="https://github.com/krammalahaifaa" target="_blank">GitHub</a>
+  <a href="https://www.linkedin.com/in/assala-haifaa-krammala-6b0634251/" target="_blank">LinkedIn</a>
+  <a href="#" id="email-trigger">Email</a>
+</section>
+
+<!-- EMAIL MODAL — ✅ FIX 1 & 2: Centered + improved button layout -->
+<div class="modal-backdrop" id="email-modal-backdrop">
+  <div class="modal">
+    <button class="modal-close" id="email-modal-close">&times;</button>
+
+    <div class="modal-title">Get in Touch</div>
+
+    <p class="modal-desc" style="margin-bottom: 20px; color: var(--muted); font-size: 0.9rem;">
+      Feel free to reach out — I'd love to connect!
+    </p>
+
+    <div class="email-address-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+      krammala.assala17ha@gmail.com
+    </div>
+
+    <div class="email-modal-actions">
+      <button class="btn" id="copy-email-btn" style="width: 100%; max-width: 260px;">
+        Copy Email
+      </button>
+      
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Krammala Assala Haifaa</p>
+</footer>
+
+<!-- IMAGE LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button id="lightbox-close" aria-label="Close">&times;</button>
+  <div id="lightbox-img-wrap">
+    <button class="lb-arrow lb-prev" aria-label="Previous image">&#8592;</button>
+    <img id="lightbox-img" src="" alt="Full view">
+    <div id="lb-counter"></div>
+    <button class="lb-arrow lb-next" aria-label="Next image">&#8594;</button>
+  </div>
+</div>
+<div id="lb-esc-hint">Press ESC or click outside to close</div>
+
+<script>
+/* ══════════════════════════════
+   PROJECT DATA
+══════════════════════════════ */
+const projects = [
+  {
+    title: "Smart Bin",
+    tags: ["ESP32", "FreeRTOS", "IoT", "C++"],
+    desc: "An ESP32-powered smart waste bin that monitors fill levels in real time and sends alerts via Wi-Fi when it needs emptying. Built using FreeRTOS for concurrent task management between sensor polling and network communication.",
+    details: [
+      "Ultrasonic sensor detects fill level with ±2 cm accuracy and publishes data over MQTT",
+      "FreeRTOS tasks handle sensor polling, display updates, and Wi-Fi transmission independently",
+      "Low-power sleep modes extend battery life between readings",
+      "Web dashboard receives live status updates and logs historical fill data"
+    ]
+  },
+  {
+    title: "Solar Tracker",
+    tags: ["Arduino", "LDR Sensors", "Servo Motor", "C"],
+    desc: "A dual-axis solar tracking system that uses LDR sensors to continuously orient a solar panel toward the sun, maximizing energy capture throughout the day.",
+    details: [
+      "Four LDR sensors arranged in quadrants detect differential light intensity to determine sun position",
+      "Two servo motors adjust panel tilt (elevation) and rotation (azimuth) based on sensor readings",
+      "Control algorithm compares sensor pairs and drives motors until the panel reaches optimal alignment",
+      "Tested and simulated on Wokwi before physical assembly"
+    ]
+  },
+  {
+    title: "Mobilis Monitoring System",
+    tags: ["ESP32", "IoT", "Real-time", "Sensors"],
+    desc: "An embedded IoT prototype developed during the Mobilis internship to monitor infrastructure conditions in a telecommunications environment. Collects sensor data and streams it to a real-time dashboard.",
+    details: [
+      "ESP32 gathers environmental readings (temperature, humidity) from installed sensors",
+      "Data is transmitted over Wi-Fi using HTTP and displayed on a live monitoring interface",
+      "Designed to detect anomalies and flag out-of-range conditions automatically",
+      "Prototype demonstrated in an industrial setting as a proof-of-concept for predictive maintenance"
+    ]
+  }
+];
+
+/* ── Build project cards ── */
+const grid = document.getElementById('projects-grid');
+
+projects.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'project-card';
+  card.setAttribute('role', 'button');
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('aria-label', 'View details for ' + p.title);
+  card.innerHTML = `
+    <div class="project-card-title">${p.title}</div>
+    <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    <div class="project-card-hint">
+      View details
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 7h8M7.5 4l3.5 3-3.5 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  `;
+  card.addEventListener('click', () => openModal(p));
+  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(p); } });
+  grid.appendChild(card);
+});
+
+/* ── Modal logic ── */
+const backdrop   = document.getElementById('modal-backdrop');
+const modalTitle = document.getElementById('modal-title-el');
+const modalTags  = document.getElementById('modal-tags');
+const modalDesc  = document.getElementById('modal-desc');
+const modalDets  = document.getElementById('modal-details');
+const modalClose = document.getElementById('modal-close');
+
+function openModal(p) {
+  modalTitle.textContent = p.title;
+  modalTags.innerHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+  modalDesc.textContent = p.desc;
+  modalDets.innerHTML = p.details.map(d => `<li>${d}</li>`).join('');
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  modalClose.focus();
+}
+
+function closeModal() {
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
+
+/* ══════════════════════════════
+   CAROUSEL
+══════════════════════════════ */
+document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+  const track = wrapper.querySelector('.carousel-track');
+  const imgs = track.querySelectorAll('img');
+  const count = imgs.length;
+  const rawImages = JSON.parse(wrapper.dataset.images || '[]');
+
+  let dotsWrap = wrapper.parentElement.querySelector('.carousel-dots');
+  if (!dotsWrap) {
+    dotsWrap = document.createElement('div');
+    dotsWrap.className = 'carousel-dots';
+    wrapper.parentElement.appendChild(dotsWrap);
+  }
+
+  let current = 0, autoTimer;
+
+  track.style.width = (count * 100) + '%';
+  imgs.forEach(img => { img.style.width = (100 / count) + '%'; });
+
+  const dots = [];
+  for (let i = 0; i < count; i++) {
+    const d = document.createElement('span');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+    dots.push(d);
+  }
+
+  function goTo(index) {
+    current = (index + count) % count;
+    track.style.transform = 'translateX(-' + (current * (100 / count)) + '%)';
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 3200); }
+  function stopAuto()  { clearInterval(autoTimer); }
+
+  wrapper.querySelector('.prev').addEventListener('click', e => { e.stopPropagation(); stopAuto(); goTo(current - 1); startAuto(); });
+  wrapper.querySelector('.next').addEventListener('click', e => { e.stopPropagation(); stopAuto(); goTo(current + 1); startAuto(); });
+  wrapper.addEventListener('mouseenter', stopAuto);
+  wrapper.addEventListener('mouseleave', startAuto);
+  wrapper.addEventListener('click', () => openLightbox(rawImages, current));
+
+  startAuto();
+});
+
+/* ── Single image lightbox trigger ── */
+document.querySelectorAll('.design-single-img, [data-lightbox-src]').forEach(img => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', () => openLightbox([img.dataset.lightboxSrc || img.src], 0));
+});
+
+/* ══════════════════════════════
+   IMAGE LIGHTBOX
+══════════════════════════════ */
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lightbox-img');
+const lbCounter = document.getElementById('lb-counter');
+const lbPrev    = document.querySelector('.lb-arrow.lb-prev');
+const lbNext    = document.querySelector('.lb-arrow.lb-next');
+const lbClose   = document.getElementById('lightbox-close');
+let lbImages = [], lbIndex = 0;
+
+function openLightbox(images, startIndex) {
+  lbImages = images;
+  lbIndex = startIndex;
+  showLbImage();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showLbImage() {
+  lbImg.src = lbImages[lbIndex];
+  lbCounter.textContent = lbImages.length > 1 ? (lbIndex + 1) + ' / ' + lbImages.length : '';
+  const single = lbImages.length <= 1;
+  lbPrev.classList.toggle('hidden', single);
+  lbNext.classList.toggle('hidden', single);
+}
+
+lbPrev.addEventListener('click', e => { e.stopPropagation(); lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; showLbImage(); });
+lbNext.addEventListener('click', e => { e.stopPropagation(); lbIndex = (lbIndex + 1) % lbImages.length; showLbImage(); });
+lbClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+/* ── Global keyboard ── */
+document.addEventListener('keydown', e => {
+  if (lightbox.classList.contains('open')) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; showLbImage(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; showLbImage(); }
+    return;
+  }
+  if (backdrop.classList.contains('open') && e.key === 'Escape') closeModal();
+  if (emailBackdrop.classList.contains('open') && e.key === 'Escape') closeEmailModal();
+});
+
+/* ══════════════════════════════
+   EMAIL MODAL
+══════════════════════════════ */
+const emailTrigger  = document.getElementById('email-trigger');
+const emailBackdrop = document.getElementById('email-modal-backdrop');
+const emailClose    = document.getElementById('email-modal-close');
+const copyEmailBtn  = document.getElementById('copy-email-btn');
+
+function openEmailModal() {
+  emailBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEmailModal() {
+  emailBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+emailTrigger.addEventListener('click', e => { e.preventDefault(); openEmailModal(); });
+emailClose.addEventListener('click', closeEmailModal);
+emailBackdrop.addEventListener('click', e => { if (e.target === emailBackdrop) closeEmailModal(); });
+
+copyEmailBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText('krammala.assala17ha@gmail.com');
+  copyEmailBtn.textContent = '✓  Copied!';
+  setTimeout(() => { copyEmailBtn.textContent = 'Copy Email'; }, 1800);
+});
+</script>
+</body>
+</html>
